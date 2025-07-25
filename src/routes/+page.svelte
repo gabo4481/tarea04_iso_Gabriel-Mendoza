@@ -4,15 +4,27 @@
     import PostItem from '$lib/components/PostItem.svelte';
 
     export let data;
-    let initialPosts = data.posts || [];
-    let localPosts = [...initialPosts]; 
-	console.log(localPosts)
+    
+    // Contador de cargas
+    let loadCount = 0;
+    let localPosts = [];
     let errorMsg = '';
     
     // Estados para edición
     let editId = null;
     let editTitle = '';
     let editBody = '';
+
+    // Actualizar posts cuando cambian los datos
+    $: {
+        loadCount++;
+        
+        // Solo actualizamos los posts locales con los datos del servidor en la primera carga
+        if (loadCount === 1) {
+            localPosts = [...data.posts || []];
+        }
+        // En cargas posteriores (por invalidate) mantenemos los cambios locales
+    }
 
     function startEdit(post) {
         editId = post.id;
@@ -33,22 +45,18 @@
             
             if (data?.success) {
                 if (data.newPost) {
-
+                    // Agregar el nuevo post localmente
                     localPosts = [data.newPost, ...localPosts];
-                    
-                    // 2. Invalidar para recargar datos de fondo
                     await invalidate('load:posts');
-                    
-
                 } else if (data.updatedPost) {
-                    // Actualización optimista local
+                    // Actualizar el post localmente
                     localPosts = localPosts.map(p => 
                         p.id === data.updatedPost.id ? data.updatedPost : p
                     );
                     cancelEdit();
                     await invalidate('load:posts');
                 } else if (data.id) {
-                    // Eliminación optimista local
+                    // Eliminar el post localmente
                     localPosts = localPosts.filter(p => p.id !== data.id);
                     await invalidate('load:posts');
                 }
@@ -66,7 +74,7 @@
         <p class="error">{errorMsg}</p>
     {/if}
 
-
+    <!-- Formulario de creación/edición -->
     <h2>
         {#if editId === null}
             Crear nueva publicación
@@ -125,7 +133,7 @@
         </div>
     </form>
 
-
+    <!-- Lista de Posts -->
     <div class="posts-list">
         <h2>Publicaciones ({localPosts.length})</h2>
         

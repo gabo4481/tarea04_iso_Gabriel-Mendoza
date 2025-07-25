@@ -18,7 +18,7 @@ Este proyecto implementa una aplicación CRUD (Create, Read, Update, Delete) de 
 1. **Clonar el repositorio**:
 
 ```bash
-git clone https://github.com/tu_usuario/sveltekit-jsonplaceholder-crud.git
+git clone https://github.com/gabo4481/tarea04_iso_Gabriel-Mendoza.git
 cd sveltekit-jsonplaceholder-crud
 ```
 
@@ -118,6 +118,6 @@ src/
 
 ## ✍️ Autor
 
-**Gabriel Mendoza** — [github.com/tu_usuario](https://github.com/tu_usuario)
+**Gabriel Mendoza** — [github.com/gabo4481](https://github.com/gabo4481)
 
 ¡Gracias por revisar este proyecto!
