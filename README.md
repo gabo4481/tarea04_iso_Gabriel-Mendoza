@@ -46,7 +46,7 @@ src/
 ├── routes/
 │   └── +page.svelte          # Página principal CRUD
 │   └── +page.server.js       # Lógica de carga y acciones
-│   └── PostForm.svelte       # Formulario reutilizable
+├── components/
 │   └── PostItem.svelte       # Item individual
 ```
 
@@ -87,11 +87,11 @@ src/
 ## 📸 Capturas sugeridas
 
 1. Pantalla principal con lista de publicaciones ![Vista principal](./captura/inicio.PNG)
-2. Posts traidos de la Api [Vista Posts](./captura/publicaciones.PNG)
-3. Formulario para agregar nueva publicación [Vista agregar](./captura/agrgar.PNG)
-4. Validación de campos vacíos  [Vista validacion](./captura/validacion.PNG)
-5. Edición de publicación activa [Vista edicion](./captura/editar.PNG)
-6. Publicación eliminada exitosamente [Vista eliminacion](./captura/elimi8nar.PNG)
+2. Posts traidos de la Api ![Vista Posts](./captura/publicaciones.PNG)
+3. Formulario para agregar nueva publicación ![Vista agregar](./captura/agrgar.PNG)
+4. Validación de campos vacíos  ![Vista validacion](./captura/validacion.PNG)
+5. Edición de publicación activa ![Vista edicion](./captura/editar.PNG)
+6. Publicación eliminada exitosamente ![Vista eliminacion](./captura/elimi8nar.PNG)
 
 ---
 
